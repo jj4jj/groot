@@ -1,0 +1,27 @@
+<script>
+socket = new WebSocket("ws://192.168.1.28:8080/notify/ping");
+socket.onopen = function(){
+    console.log("Socket has been opened");
+    for(let i = 0;i < 5 ; ++i){
+        socket.send("hello,world!");
+    }
+    //socket.close();
+}
+
+socket.onmessage = function(msg){
+    console.log("Socket recv msg:" + msg.data);
+}
+
+socket.onclose = function() {
+    console.log("Socket has been closed");
+}
+
+function heart_beat(){
+    socket.send("ping-pong ping")
+}
+
+setInterval("heart_beat()", 4000)
+
+
+
+</script>

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package crypto;
+
+message MsgTicketBaseCtx {
+    uint32  expired_time = 1; //expired unix time
+    uint32  issue_time = 2; //issue time unix
+    bytes   payload_ctx = 3; //payload
+}
+
+
+
